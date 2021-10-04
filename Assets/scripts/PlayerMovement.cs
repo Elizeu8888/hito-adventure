@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public ParticleSystem dust;
     Vector2 movement;
     public GameObject camera;
+    bool sensedanger;
 
      // Update is called once per frame
     void Update()
@@ -26,13 +27,30 @@ public class PlayerMovement : MonoBehaviour
         {
             CreateDust();
         }*/
-
+        
 
         DoMove();
         if (Rb.velocity.y > 0.1 || Rb.velocity.x > 0.1)
         {
             //CreateDust();
         }
+
+        anim.SetBool("drawsword", false);
+
+
+        if (Input.GetKey("v"))
+        {
+            anim.SetBool("drawsword", true);
+        }
+        else
+        {
+            anim.SetBool("drawsword", false);
+        }
+
+
+
+
+
 
     }
 
@@ -43,13 +61,12 @@ public class PlayerMovement : MonoBehaviour
 
         if (movement.x > 0)
         {
-            transform.localScale = new Vector3(1f, 1f, 0.5f);
+            Helper.FaceLeft(gameObject, true);
         }
         else if (movement.x < 0)
         {
-            transform.localScale = new Vector3(-1f, 1f, 0.5f);
+            Helper.FaceLeft(gameObject, false);
         }
-
     }
 
 
@@ -79,7 +96,7 @@ public class PlayerMovement : MonoBehaviour
         if (col.gameObject.tag == "door2")
         {
             print("hit door");
-            transform.position = transform.position + new Vector3(1, 7, 0);
+            transform.position = transform.position + new Vector3(0, 7, 0);
 
             camera.transform.position = new Vector3(0, 0, -10);
         }
@@ -98,7 +115,10 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-
+    void SetSenseDanger()
+    {
+        sensedanger = true;
+    }
 
 
 

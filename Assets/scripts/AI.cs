@@ -9,7 +9,7 @@ public class AI : MonoBehaviour
     public float attackradius;
 
     public bool shouldrotate;
-    
+
     public LayerMask WhatIsPlayer;
 
     private Transform target;
@@ -24,13 +24,13 @@ public class AI : MonoBehaviour
 
     void Start()
     {
-        
+
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        target = GameObject.FindWithTag("Player").transform;
+        target = GameObject.FindGameObjectWithTag("Player").transform;
 
         print(target);
-        
+
     }
 
     void Update()
@@ -53,6 +53,9 @@ public class AI : MonoBehaviour
             anim.SetFloat("x", direction.x);
             anim.SetFloat("y", direction.y);
         }
+
+
+ 
 
         if (isinchaserange && !isinattackrange)
         {
@@ -78,7 +81,8 @@ public class AI : MonoBehaviour
     }
 
 
-   
+
+
 
 
     private void MoveCharacter(Vector2 direction)
