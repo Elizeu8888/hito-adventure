@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
+
 public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 5f;
@@ -11,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     Vector2 movement;
     public GameObject camera;
     bool sensedanger;
+    public GameObject firework;
 
      // Update is called once per frame
     void Update()
@@ -49,7 +53,10 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-
+        if (Input.GetKeyDown("f"))
+        {
+            DoShoot();
+        }
 
 
     }
@@ -89,6 +96,39 @@ public class PlayerMovement : MonoBehaviour
 
         //CreateDust();
     }
+
+    void DoShoot()
+    {
+
+        if (Input.GetKeyDown("f"))
+        {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        }
+
+
+
+
+
+    }
+
+
+
+
+
 
     void OnCollisionEnter2D(Collision2D col)
     {
